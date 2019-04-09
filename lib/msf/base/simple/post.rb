@@ -37,6 +37,12 @@ module Post
   # 	Whether or not the module should be run in the context of a background
   # 	job.
   #
+  # RaiseExceptions
+  #
+  #   Boolean value which determines whether or not to use default MSF
+  #   exception handling. If 'false', any exceptions need to be rescued in
+  #   the post module itself.
+  #
   def self.run_simple(omod, opts = {}, &block)
 
     # Clone the module to prevent changes to the original instance
@@ -72,7 +78,14 @@ module Post
       omod.job_id = mod.job_id
     else
       ctx = [ mod ]
-      self.job_run_proc(ctx)
+
+      # for custom exception handling from purple modules
+      if opts['RaiseExceptions']
+        self.job_run_proc_raise_exceptions(ctx)
+      else
+        self.job_run_proc(ctx)
+      end
+
       self.job_cleanup_proc(ctx)
     end
   end
@@ -145,6 +158,36 @@ protected
       return
     end
   end
+
+  #
+  # This is just a copy of job_run_proc with exception handling removed.
+  # Used in purple team modules to have visibility into post modules we 
+  # call out to.
+  #
+  def self.job_run_proc_raise_exceptions(ctx)
+    mod = ctx[0]
+
+    mod.setup
+    mod.framework.events.on_module_run(mod)
+    # Grab the session object since we need to fire an event for not
+    # only the normal module_run event that all module types have to
+    # report, but a specific event for sessions as well.
+    s = mod.framework.sessions.get(mod.datastore["SESSION"])
+    if s
+      mod.framework.events.on_session_module_run(s, mod)
+      mod.run
+    else
+      mod.print_error("Session not found")
+      mod.cleanup
+      return
+    end
+
+    mod.cleanup
+
+    return
+  end
+
+
 
   #
   # Clean up the module after the job completes.

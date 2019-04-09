@@ -1,0 +1,11 @@
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\bin\x64\Release\PrintMonitor.dll.config
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\bin\x64\Release\PrintMonitor.dll
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\bin\x64\Release\PrintMonitor.pdb
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\obj\x64\Release\PrintMonitor.dll
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\obj\x64\Release\PrintMonitor.pdb
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\bin\x64\Release\PrintMonitor.dll.config
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\bin\x64\Release\PrintMonitor.dll
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\bin\x64\Release\PrintMonitor.pdb
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\obj\x64\Release\PrintMonitor.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\obj\x64\Release\PrintMonitor.dll
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\obj\x64\Release\PrintMonitor.pdb
