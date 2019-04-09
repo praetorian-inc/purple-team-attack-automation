@@ -55,6 +55,17 @@ COPY --chown=root:metasploit --from=builder /usr/local/bundle /usr/local/bundle
 COPY --chown=root:metasploit . $APP_HOME/
 RUN cp -f $APP_HOME/docker/database.yml $APP_HOME/config/database.yml
 
+# Install impacket in the container
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python get-pip.py
+RUN curl https://codeload.github.com/SecureAuthCorp/impacket/tar.gz/impacket_0_9_17 -o impacket.tar.gz
+RUN tar xzvf impacket.tar.gz
+RUN cd /impacket-impacket_0_9_17 && python setup.py install; exit 0
+RUN pip install ldap3==2.5.1
+RUN curl https://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-2.7a1.tar.gz -o pycrypto-2.7a1.tar.gz
+RUN tar xzvf pycrypto-2.7a1.tar.gz
+RUN cd /pycrypto-2.7a1 &&  python setup.py install
+
 WORKDIR $APP_HOME
 
 # we need this entrypoint to dynamically create a user

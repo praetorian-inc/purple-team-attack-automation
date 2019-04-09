@@ -1,0 +1,7 @@
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\bin\x86\Debug\PrintMonitor.dll.config
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\bin\x86\Debug\PrintMonitor.dll
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\bin\x86\Debug\PrintMonitor.pdb
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\obj\x86\Debug\PrintMonitor.csprojAssemblyReference.cache
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\obj\x86\Debug\PrintMonitor.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\obj\x86\Debug\PrintMonitor.dll
+C:\Users\Daniel\Desktop\t1013\src\PrintMonitor\obj\x86\Debug\PrintMonitor.pdb

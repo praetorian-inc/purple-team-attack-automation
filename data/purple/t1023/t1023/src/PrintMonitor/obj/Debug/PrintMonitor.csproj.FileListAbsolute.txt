@@ -1,0 +1,8 @@
+c:\users\admin\documents\visual studio 2013\Projects\PrintMonitor\PrintMonitor\bin\Debug\PrintMonitor.exe.config
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\bin\Debug\PrintMonitor.exe.config
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\bin\Debug\PrintMonitor.exe
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\bin\Debug\PrintMonitor.pdb
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\obj\Debug\PrintMonitor.csprojAssemblyReference.cache
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\obj\Debug\PrintMonitor.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\obj\Debug\PrintMonitor.exe
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\obj\Debug\PrintMonitor.pdb

@@ -10,6 +10,7 @@ module Msf::Post::Windows
   require 'msf/core/post/windows/powershell'
   require 'msf/core/post/windows/priv'
   require 'msf/core/post/windows/process'
+  require 'msf/core/post/windows/purple'
   require 'msf/core/post/windows/railgun'
   require 'msf/core/post/windows/registry'
   require 'msf/core/post/windows/runas'

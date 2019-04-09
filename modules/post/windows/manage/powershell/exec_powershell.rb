@@ -62,7 +62,7 @@ class MetasploitModule < Msf::Post
     # check/set vars
     subs = process_subs(datastore['SUBSTITUTIONS'])
     script_in = read_script(datastore['SCRIPT'])
-    print_status(script_in)
+    vprint_status(script_in)
 
     # Make substitutions in script if needed
     script_in = make_subs(script_in, subs) unless subs.empty?
@@ -95,7 +95,7 @@ class MetasploitModule < Msf::Post
       error_msg += "cmd.exe's 8kB character limit."
       print_error(error_msg)
       print_status('Launching stager:')
-      script = stage_to_env(compressed_script, env_suffix)
+      script = stage_psh_env(compressed_script, env_suffix)
       print_good("Payload successfully staged.")
     else
       print_good("Compressed size: #{compressed_script.size}")

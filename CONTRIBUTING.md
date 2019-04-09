@@ -1,101 +1,122 @@
-# Hello, World!
+# Contributing
+Thanks for your interest in helping Praetorian's Purple Team ATT&CK&trade; Automation Project!
 
-Thanks for your interest in making Metasploit -- and therefore, the
-world -- a better place!  Before you get started, review our
-[Code of Conduct].  There are mutliple ways to help beyond just writing code:
- - [Submit bugs and feature requests] with detailed information about your issue or idea.
- - [Help fellow users with open issues] or [help fellow committers test recent pull requests].
- - [Report a security vulnerability in Metasploit itself] to Rapid7.
- - Submit an updated or brand new module!  We are always eager for exploits, scanners, and new
-   integrations or features. Don't know where to start? Set up a [development environment], then head over to ExploitDB to look for [proof-of-concept exploits] that might make a good module.
+Are you about to report a bug? Sorry to hear it. Here's our [Issue tracker](https://github.com/praetorian-inc/purple-team-attack-automation/issues).
+Please try to be as specific as you can about your problem; include steps to reproduce (cut and paste from your console output if it's helpful) and what you were expecting to happen.
 
-# Contributing to Metasploit
+# Contributing to Purpleteam Automation
 
-Here's a short list of do's and don'ts to make sure *your* valuable contributions actually make
-it into Metasploit's master branch.  If you do not care to follow these rules, your contribution
-**will** be closed. Sorry!
+What you see here in CONTRIBUTING.md is a guide to contributing to our project. It'll walk you through, step-by-step, to making your own post module and submitting it for review.
 
-## Code Contributions
+# Intended Audience
 
-* **Do** stick to the [Ruby style guide] and use [Rubocop] to find common style issues.
-* **Do** follow the [50/72 rule] for Git commit messages.
-* **Do** license your code as BSD 3-clause, BSD 2-clause, or MIT.
-* **Do** create a [topic branch] to work on instead of working directly on `master` to preserve the
-  history of your pull request.  See [PR#8000] for an example of losing commit history as soon as
-  you update your own master branch.
+This document is intended for people familiar with the following concepts
+and technologies: `metasploit`, `git`, `ruby`, `Windows`, and `object-oriented programming`.
+You don't need to know all the ins and outs, but a working knowlege of these is helpful.
 
-### Pull Requests
+# Project Structure
 
-* **Do** target your pull request to the **master branch**.
-* **Do** specify a descriptive title to make searching for your pull request easier.
-* **Do** include [console output], especially for witnessable effects in `msfconsole`.
-* **Do** list [verification steps] so your code is testable.
-* **Do** [reference associated issues] in your pull request description.
-* **Don't** leave your pull request description blank.
-* **Don't** abandon your pull request. Being responsive helps us land your code faster.
+We are working off of a fork of Metasploit 5. All contributions for the moment should be in the following folders:
 
-Pull request [PR#9966] is a good example to follow.
+* `modules/post/windows/purple` for Windows TTPs
+* `modules/post/linux/purple` for Linux TTPs
+* `modules/post/osx/purple` for macOS TTPs
+* `modules/post/multi/purple` for TTPs that can be utilized by multiple operating systems. TTPs that are network based (such as network scanning) should go here
 
-#### New Modules
+All work is being done on the `master` branch. When working on a module, make a new branch off of `master` following the steps below, and make a pull request to merge your change into `master`.
 
-* **Do** set up `msftidy` to fix any errors or warnings that come up as a [pre-commit hook].
-* **Do** use the many module mixin [API]s.
-* **Don't** include more than one module per pull request.
-* **Do** include instructions on how to setup the vulnerable environment or software.
-* **Do** include [Module Documentation] showing sample run-throughs.
-* **Don't** submit new [scripts].  Scripts are shipped as examples for automating local tasks, and
-  anything "serious" can be done with post modules and local exploits.
+Place data files (compiled exes, other scripts and payloads) in `data/purple/tXXXX/`. Make a new directory if working on a new payload. If submitting a compiled binary, please also include the source.
 
-#### Library Code
+# Dev and Testing
 
-* **Do** write [RSpec] tests - even the smallest change in a library can break existing code.
-* **Do** follow [Better Specs] - it's like the style guide for specs.
-* **Do** write [YARD] documentation - this makes it easier for people to use your code.
-* **Don't** fix a lot of things in one pull request. Small fixes are easier to validate.
+We recommend you utilize a lab (such as https://github.com/clong/DetectionLab) to test TTPs.
 
-#### Bug Fixes
 
-* **Do** include reproduction steps in the form of verification steps.
-* **Do** link to any corresponding [Issues] in the format of `See #1234` in your commit description.
+# Testing and submitting
 
-## Bug Reports
+- To test your work, you can use `reload` and `reload all` in Metasploit to force it to reload the most recent code.
+- Run ./tools/dev/msftidy.rb on your module and address any issues. There's a couple of warnings we're not concerned about:
+- `~/purple-team-attack-automation/tools/dev/msftidy.rb . | grep -v CVE | grep -v license | grep -v download`
 
-Please report vulnerabilities in Rapid7 software directly to security@rapid7.com. For more on our disclosure policy and Rapid7's approach to coordinated disclosure, [head over here](https://www.rapid7.com/security). 
+# Standards
+Abide by the following standards and coding guidelines when building modules.
 
-When reporting Metasploit issues:
-* **Do** write a detailed description of your bug and use a descriptive title.
-* **Do** include reproduction steps, stack traces, and anything that might help us fix your bug.
-* **Don't** file duplicate reports; search for your bug before filing a new report.
+## Titles
+Module name should be in the following format:
+{MITRE title} ({MITRE #}) {OS} - Purple Team
 
-If you need some more guidance, talk to the main body of open source contributors over on our
-[Metasploit Slack] or [#metasploit on Freenode IRC].
+## References
 
-Finally, **thank you** for taking the few moments to read this far! You're already way ahead of the
-curve, so keep it up!
+Please include a URL reference to the MITRE TTP number. Please give credit if you used code from other sources.
 
-[Code of Conduct]:https://github.com/rapid7/metasploit-framework/wiki/CODE_OF_CONDUCT.md
-[Submit bugs and feature requests]:http://r-7.co/MSF-BUGv1
-[Help fellow users with open issues]:https://github.com/rapid7/metasploit-framework/issues
-[help fellow committers test recently submitted pull requests]:https://github.com/rapid7/metasploit-framework/pulls
-[Report a security vulnerability in Metasploit itself]:https://www.rapid7.com/disclosure.jsp
-[development environment]:http://r-7.co/MSF-DEV
-[proof-of-concept exploits]:https://www.exploit-db.com/search?verified=true&hasapp=true&nomsf=true
-[Ruby style guide]:https://github.com/bbatsov/ruby-style-guide
-[Rubocop]:https://rubygems.org/search?query=rubocop
-[50/72 rule]:http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-[topic branch]:http://git-scm.com/book/en/Git-Branching-Branching-Workflows#Topic-Branches
-[PR#8000]:https://github.com/rapid7/metasploit-framework/pull/8000
-[console output]:https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks
-[verification steps]:https://help.github.com/articles/writing-on-github#task-lists
-[reference associated issues]:https://github.com/blog/1506-closing-issues-via-pull-requests
-[PR#9966]:https://github.com/rapid7/metasploit-framework/pull/9966
-[pre-commit hook]:https://github.com/rapid7/metasploit-framework/blob/master/tools/dev/pre-commit-hook.rb
-[API]:https://rapid7.github.io/metasploit-framework/api
-[Module Documentation]:https://github.com/rapid7/metasploit-framework/wiki/Generating-Module-Documentation
-[scripts]:https://github.com/rapid7/metasploit-framework/tree/master/scripts
-[RSpec]:http://rspec.info
-[Better Specs]:http://betterspecs.org
-[YARD]:http://yardoc.org
-[Issues]:https://github.com/rapid7/metasploit-framework/issues
-[Metasploit Slack]:https://www.metasploit.com/slack
-[#metasploit on Freenode IRC]:http://webchat.freenode.net/?channels=%23metasploit&uio=d4
+## Description
+
+Copy the relevant portions of the description from MITRE. Add any other information needed for running the module.
+
+## msftidy
+Run ./tools/dev/msftidy.rb on a module before submitting for merge request. Make sure to fix all findings
+
+## General
+
+All files should write to the root of the primary drive
+
+Cleanup should be default (except for Persistence)
+
+Output the following line
+`print_good("Module {{ttp #}} execution successful")`
+or
+`print_error("Module {{ttp #}} execution failed")`
+
+## Begin/Rescue
+
+Yes. We know it's not great to surrond your entire code block in a try/catch. Our dev team is shaking their heads. However, considering some of the weird errors that can occur when using Meterpreter payloads, we found that this made our error testing and catching a lot more efficient. We suggest you do the same.
+
+## Execution
+
+All execution modules should default to starting calc.exe
+
+The module should check if calc is running first and kill it if it does
+
+After starting calc, the module should confirm that calc is running and kill it before it reports success
+
+## Persistence
+
+Persistence modules should write a file to the root drive
+
+The file should be titled txxxx.txt
+
+The contents of the file should be:
+
+```
+txxxx
+user context (output of whoami)
+date (output from date /t)
+time (output from time /t)
+```
+
+## .NET
+
+If .NET code already exists for a TTP, feel free to convert it a DLL. Follow these directions.
+
+https://github.com/praetorian-inc/purple-team-attack-automation/blob/master/Execute-Assembly.md
+
+## PowerShell
+
+Please utilize [Meterpreter's PowerShell extension](https://www.darkoperator.com/blog/2016/4/2/meterpreter-new-windows-powershell-extension). It is less likely to get flagged by AV/EDRs.
+
+## EXEs and DLLs
+
+Instead of using `msfvenom` please use compiled code (such as from a C, C++, .NET, etc project). Venom binaries are flagged and that prevents us from understanding
+if the TTP behavior was detected vs simply being signature flagged by AV
+
+## Purple Library
+
+We created 3 functions to assist with automation.
+
+kill_calc
+
+run_cmd
+
+check_for_calc
+
+Information on these functions can be found in `lib/msf/core/post/windows/purlpe.rb`

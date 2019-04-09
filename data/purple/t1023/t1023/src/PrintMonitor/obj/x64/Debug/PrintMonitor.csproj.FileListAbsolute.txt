@@ -1,0 +1,7 @@
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\bin\x64\Debug\PrintMonitor.exe.config
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\bin\x64\Debug\PrintMonitor.exe
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\bin\x64\Debug\PrintMonitor.pdb
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\obj\x64\Debug\PrintMonitor.csprojAssemblyReference.cache
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\obj\x64\Debug\PrintMonitor.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\obj\x64\Debug\PrintMonitor.exe
+C:\Users\Daniel\Desktop\generic DLL for automation\t1023\src\PrintMonitor\obj\x64\Debug\PrintMonitor.pdb
