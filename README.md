@@ -53,8 +53,9 @@ services:
   Copy and run meterpreter.exe on the target (“victim”) host as admin and wait for a session.
 *	Run a TTP as a post-exploitation module. The list of modules is provided below. For example, to start the 'Credential Dumping (T1003)’ module, run:  
 ```
-use modules/post/windows/purple/t1003.rb
-infoset session 1
+use modules/post/windows/purple/t1003
+info
+set session 1
 run
 ```
 
