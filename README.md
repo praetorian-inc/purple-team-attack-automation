@@ -6,6 +6,10 @@ This is a fork of the the latest version of Metasploit (as of 09Apr2019) pulled 
 
 We're open sourcing our work because we believe in solving the cybersecurity problem. By giving Blue Teams more tools to emulate adversary behavior, we hope to improve their capabilities and reduce the still very high average dwell time.
 
+## Wiki
+
+For detailed usage and a list of modules and changes, please view the [wiki](https://github.com/praetorian-inc/purple-team-attack-automation/wiki).
+
 ## Quickstart
 
 Installation should follow the instructions for installing a Metasploit Docker environment:
