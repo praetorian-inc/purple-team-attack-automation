@@ -109,6 +109,7 @@ At Praetorian, the following engineers helped contribute modules:
 * Abraham Adberstein
 * Tanner Harper
 * Thomas Hendrickson [github.com/tomis007](github.com/tomis007)
+* George Jouldjian 
 * Dallas Kaman
 * Blake Luther
 * Matt Schneider
