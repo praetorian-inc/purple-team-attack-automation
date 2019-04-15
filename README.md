@@ -11,7 +11,7 @@ We're open sourcing our work because we believe in solving the cybersecurity pro
 
 ## Wiki
 
-For detailed usage and a list of modules and changes, please view the [wiki](https://github.com/praetorian-inc/purple-team-attack-automation/wiki).
+For detailed opertional usage guidance and a list of modules and changes, please view the [wiki](https://github.com/praetorian-inc/purple-team-attack-automation/wiki).
 
 ## Quickstart
 
