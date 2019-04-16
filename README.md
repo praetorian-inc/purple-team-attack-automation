@@ -109,7 +109,7 @@ At Praetorian, the following engineers helped contribute modules:
 * Josh Abraham `jabra [at] spl0it.org` and [@jabra](https://twitter.com/Jabra)
 * Abraham Adberstein
 * Tanner Harper
-* Thomas Hendrickson [github.com/tomis007](github.com/tomis007)
+* Thomas Hendrickson [github.com/tomis007](https://www.github.com/tomis007)
 * George Jouldjian 
 * Dallas Kaman
 * Blake Luther
