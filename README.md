@@ -82,7 +82,7 @@ service docker start
 
 ## Contact
 
-If you're interested in our Purple Team services, [please reach out to us](https://www.praetorian.com/contact).
+If you're interested in our Purple Team services, please [contact us](https://www.praetorian.com/contact) online or read more about "[Why Praetorian Benchmarks to MITRE ATT&CK™ and Why You Should Too](https://p16.praetorian.com/blog/why-praetorian-benchmarks-to-mitre-attack?utm_campaign=blog&utm_medium=social&utm_source=github)".
 
 If you're an engineer looking to join our great team, we have openings at [our careers page](https://www.praetorian.com/company/careers).
 
