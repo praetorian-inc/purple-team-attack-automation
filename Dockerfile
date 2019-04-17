@@ -46,7 +46,7 @@ ENV METASPLOIT_GROUP=metasploit
 # used for the copy command
 RUN addgroup -S $METASPLOIT_GROUP
 
-RUN apk add --no-cache bash sqlite-libs nmap nmap-scripts nmap-nselibs postgresql-libs python python3 ncurses libcap su-exec
+RUN apk add --no-cache bash sqlite-libs nmap nmap-scripts nmap-nselibs postgresql-libs python python3 ncurses libcap su-exec curl git gcc libc-dev python2-dev
 
 RUN /usr/sbin/setcap cap_net_raw,cap_net_bind_service=+eip $(which ruby)
 RUN /usr/sbin/setcap cap_net_raw,cap_net_bind_service=+eip $(which nmap)
