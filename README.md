@@ -28,7 +28,7 @@ services:
   ms:
     environment:
       # example of setting LHOST
-      LHOST: [Your system's IP address]
+      LHOST: 10.0.8.2
     # example of adding more ports
     ports:
       - 8080:8080
@@ -36,6 +36,11 @@ services:
 ```
 
  * Add / Remove further ports or IP addresses as you see fit. Don't forget to change the LHOST to your own IP address.
+ * Make sure you set `LHOST` to valid hostname that resolves to your host machine.
+ * Now you need to set the `COMPOSE_FILE` environment variable to load your local override.
+ ```
+ echo "COMPOSE_FILE=./docker-compose.yml:./docker-compose.override.yml:./docker-compose.local.override.yml" >> .env
+```
  * `docker-compose build`
  * Start the container with `./docker/bin/msfconsole`
  *	Generate a Meterpreter payload:
