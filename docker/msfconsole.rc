@@ -7,4 +7,6 @@ else
 end
 run_single("setg LHOST #{lhost}")
 run_single("db_connect #{ENV['DATABASE_URL']}") if ENV['DATABASE_URL']
+run_single("reload_all")
 </ruby>
+
