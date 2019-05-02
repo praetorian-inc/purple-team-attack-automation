@@ -1,0 +1,1 @@
+c:\users\admin\documents\visual studio 2013\Projects\PrintMonitor\PrintMonitor\bin\Debug\PrintMonitor.exe.config
