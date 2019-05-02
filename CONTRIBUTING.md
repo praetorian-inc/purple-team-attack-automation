@@ -119,4 +119,4 @@ run_cmd
 
 check_for_calc
 
-Information on these functions can be found in `lib/msf/core/post/windows/purlpe.rb`
+Information on these functions can be found in `lib/msf/core/post/windows/purple.rb`
