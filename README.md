@@ -19,7 +19,7 @@ https://github.com/rapid7/metasploit-framework/tree/master/docker
 
 In general:
  * Install Docker
- * `git clone https://github.com/praetorian-inc/purple-team-attack-automation.git`
+ * `git clone https://github.com/praetorian-code/purple-team-attack-automation.git`
  * Edit `./docker-compose.local.override.yml` to reflect the LHOST of your local system similar to below. By default, port 4444 will be forwarded to the docker container. If you want to use other ports, for instance to mirror HTTPS, you'll have to add them to this file.
 
 ```
@@ -117,4 +117,4 @@ At Praetorian, the following engineers helped contribute modules:
 * Blake Luther
 * Matt Schneider
 * Matthew Verrette
-* Daniel Wyleczuk-Stern [@daniel_cybersec](https://twitter.com/Daniel_Cybersec)
+* Daniel Wyleczuk-Stern [@daniel_infosec](https://twitter.com/Daniel_Infosec)
