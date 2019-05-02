@@ -17,7 +17,8 @@ For detailed opertional [usage guidance](https://github.com/praetorian-inc/purpl
 
 ## Quickstart
 
-[![Quickstart video guide](https://img.youtube.com/vi/o3Qb_0clIpg/0.jpg)](https://www.youtube.com/watch?v=o3Qb_0clIpg)
+[![Quick start video guide](https://img.youtube.com/vi/o3Qb_0clIpg/0.jpg)](https://www.youtube.com/watch?v=o3Qb_0clIpg)
+Quick start video guide: [https://youtu.be/o3Qb_0clIpg](https://youtu.be/o3Qb_0clIpg)
 
 Installation should follow the instructions for installing a Metasploit Docker environment:
 https://github.com/rapid7/metasploit-framework/tree/master/docker
