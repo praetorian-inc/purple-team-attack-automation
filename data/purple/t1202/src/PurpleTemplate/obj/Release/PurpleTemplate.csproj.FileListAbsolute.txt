@@ -1,0 +1,6 @@
+C:\Users\Daniel\Desktop\generic DLL for automation\t1202\src\PurpleTemplate\bin\Release\PurpleTemplate.exe.config
+C:\Users\Daniel\Desktop\generic DLL for automation\t1202\src\PurpleTemplate\bin\Release\PurpleTemplate.exe
+C:\Users\Daniel\Desktop\generic DLL for automation\t1202\src\PurpleTemplate\bin\Release\PurpleTemplate.pdb
+C:\Users\Daniel\Desktop\generic DLL for automation\t1202\src\PurpleTemplate\obj\Release\PurpleTemplate.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\generic DLL for automation\t1202\src\PurpleTemplate\obj\Release\PurpleTemplate.exe
+C:\Users\Daniel\Desktop\generic DLL for automation\t1202\src\PurpleTemplate\obj\Release\PurpleTemplate.pdb

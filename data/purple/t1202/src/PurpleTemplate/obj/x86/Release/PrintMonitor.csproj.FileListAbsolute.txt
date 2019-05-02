@@ -1,0 +1,6 @@
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\bin\x86\Release\PrintMonitor.dll.config
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\bin\x86\Release\PrintMonitor.dll
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\bin\x86\Release\PrintMonitor.pdb
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\obj\x86\Release\PrintMonitor.csprojResolveAssemblyReference.cache
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\obj\x86\Release\PrintMonitor.dll
+C:\Users\admin\Documents\Visual Studio 2013\Projects\PrintMonitor\PrintMonitor\obj\x86\Release\PrintMonitor.pdb

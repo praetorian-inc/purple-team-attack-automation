@@ -44,6 +44,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^spec/})
   spec.require_paths = ["lib"]
 
+  # Modules for gmail API for phishing
+  spec.add_runtime_dependency 'mail'
+  spec.add_runtime_dependency 'google-api-client'
+
+
   # Database support
   spec.add_runtime_dependency 'activerecord', *Metasploit::Framework::RailsVersionConstraint::RAILS_VERSION
   # Need 3+ for ActiveSupport::Concern

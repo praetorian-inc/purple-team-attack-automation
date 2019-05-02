@@ -1,0 +1,7 @@
+C:\Users\Daniel\Desktop\generic DLL for automation\template\src\PrintMonitor\bin\Debug\PrintMonitor.pdb
+C:\Users\Daniel\Desktop\generic DLL for automation\template\src\PrintMonitor\obj\Debug\PurpleTemplate.csprojAssemblyReference.cache
+C:\Users\Daniel\Desktop\generic DLL for automation\template\src\PrintMonitor\obj\Debug\PurpleTemplate.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\generic DLL for automation\template\src\PrintMonitor\obj\Debug\PrintMonitor.pdb
+C:\Users\Daniel\Desktop\generic DLL for automation\template\src\PrintMonitor\bin\Debug\PrintMonitor.exe.config
+C:\Users\Daniel\Desktop\generic DLL for automation\template\src\PrintMonitor\bin\Debug\PrintMonitor.exe
+C:\Users\Daniel\Desktop\generic DLL for automation\template\src\PrintMonitor\obj\Debug\PrintMonitor.exe
