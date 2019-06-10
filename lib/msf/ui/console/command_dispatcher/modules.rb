@@ -15,9 +15,6 @@ module Msf
           include Msf::Ui::Console::CommandDispatcher
           include Msf::Ui::Console::CommandDispatcher::Common
 
-          # Constant for a retry timeout on using modules before they're loaded
-          CMD_USE_TIMEOUT = 3
-
           @@search_opts = Rex::Parser::Arguments.new(
             "-h"     => [ false, "Help banner"],
             "-o"     => [ true, "Send output to a file in csv format"],
@@ -38,7 +35,7 @@ module Msf
               "reload_all" => "Reloads all modules from all defined module paths",
               "search"     => "Searches module names and descriptions",
               "show"       => "Displays modules of a given type, or all modules",
-              "use"        => "Selects a module by name",
+              "use"        => "Interact with a module by name or search term/index",
             }
           end
 
@@ -51,6 +48,7 @@ module Msf
             @dscache = {}
             @previous_module = nil
             @module_name_stack = []
+            @module_search_results = []
             @dangerzone_map = nil
           end
 
@@ -269,7 +267,7 @@ module Msf
             added = "Loaded #{overall} modules:\n"
 
             totals.each_pair { |type, count|
-              added << "    #{count} #{type}#{count != 1 ? 's' : ''}\n"
+              added << "    #{count} #{type} modules\n"
             }
 
             print(added)
@@ -364,7 +362,7 @@ module Msf
             if args.empty?
               print_error("Argument required\n")
               cmd_search_help
-              return
+              return false
             end
 
             match = ''
@@ -390,16 +388,19 @@ module Msf
             if match.empty? && search_term.nil?
               print_error("Keywords or search argument required\n")
               cmd_search_help
-              return
+              return false
             end
 
             # Display the table of matches
             tbl = generate_module_table("Matching Modules", search_term)
             search_params = parse_search_string(match)
-            count = 0
+            count = -1
             begin
-              modules = Msf::Modules::Metadata::Cache.instance.find(search_params)
-              modules.each do |m|
+              @module_search_results = Msf::Modules::Metadata::Cache.instance.find(search_params)
+
+              return false if @module_search_results.length == 0
+
+              @module_search_results.each do |m|
                 tbl << [
                     count += 1,
                     m.full_name,
@@ -409,13 +410,15 @@ module Msf
                     m.name
                 ]
               end
-              if modules.length == 1 && use
-                used_module = modules.first.full_name
-                cmd_use(used_module)
+
+              if @module_search_results.length == 1 && use
+                used_module = @module_search_results.first.full_name
+                cmd_use(used_module, true)
               end
             rescue ArgumentError
               print_error("Invalid argument(s)\n")
               cmd_search_help
+              return false
             end
 
             if output_file
@@ -427,6 +430,8 @@ module Msf
               print_line(tbl.to_s)
               print_status("Using #{used_module}") if used_module
             end
+
+            true
           end
 
           #
@@ -602,9 +607,20 @@ module Msf
           end
 
           def cmd_use_help
-            print_line "Usage: use module_name"
+            print_line 'Usage: use <name|term|index>'
             print_line
-            print_line "The use command is used to interact with a module of a given name."
+            print_line 'Interact with a module by name or search term/index.'
+            print_line 'If a module name is not found, it will be treated as a search term.'
+            print_line 'An index from the previous search results can be selected if desired.'
+            print_line
+            print_line 'Examples:'
+            print_line '  use exploit/windows/smb/ms17_010_eternalblue'
+            print_line
+            print_line '  use eternalblue'
+            print_line '  use <name|index>'
+            print_line
+            print_line '  search eternalblue'
+            print_line '  use <name|index>'
             print_line
           end
 
@@ -623,6 +639,23 @@ module Msf
             # Try to create an instance of the supplied module name
             mod_name = args[0]
 
+            # Try to create an integer out of a supplied module name
+            mod_index =
+              begin
+                Integer(mod_name)
+              rescue ArgumentError, TypeError
+                nil
+              end
+
+            # Use a module by search index
+            if mod_index
+              return if mod_index < 0 || @module_search_results[mod_index].nil?
+              mod_name = @module_search_results[mod_index].full_name
+            end
+
+            # See if the supplied module name has already been resolved
+            mod_resolved = args[1] == true ? true : false
+
             # Ensure we have a reference name and not a path
             if mod_name.start_with?('./', 'modules/')
               mod_name.sub!(%r{^(?:\./)?modules/}, '')
@@ -633,11 +666,13 @@ module Msf
 
             begin
               mod = framework.modules.create(mod_name)
+
               unless mod
-                # Try one more time; see #4549
-                sleep CMD_USE_TIMEOUT
-                mod = framework.modules.create(mod_name)
-                unless mod
+                unless mod_resolved
+                  mods_found = cmd_search('-u', mod_name)
+                end
+
+                unless mods_found
                   print_error("Failed to load module: #{mod_name}")
                   return false
                 end
@@ -1150,7 +1185,7 @@ module Msf
 
           def show_module_set(type, module_set, regex = nil, minrank = nil, opts = nil) # :nodoc:
             tbl = generate_module_table(type)
-            count = 0
+            count = -1
             module_set.sort.each { |refname, mod|
               o = nil
 
