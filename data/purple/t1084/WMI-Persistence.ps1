@@ -2,7 +2,7 @@ function Install-Persistence{
 
     $EventFilterName = 'Cleanup'
     $EventConsumerName = 'DataCleanup'
-    $finalPayload = "echo T1084 > C:\t1084.txt && whoami >> C:\t1084.txt && date /t >> C:\t1084.txt && time /t >> C:\t1084.txt"
+    $finalPayload = ""c:\windows\system32\cmd.exe /c echo T1084 > C:\t1084.txt && c:\windows\system32\cmd.exe /c whoami >> C:\t1084.txt && c:\windows\system32\cmd.exe /c date /t >> C:\t1084.txt && c:\windows\system32\cmd.exe /c time /t >> C:\t1084.txt"
 
     # Create event filter
     $EventFilterArgs = @{
