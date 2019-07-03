@@ -62,9 +62,10 @@ RUN curl https://codeload.github.com/SecureAuthCorp/impacket/tar.gz/impacket_0_9
 RUN tar xzvf impacket.tar.gz
 RUN cd /impacket-impacket_0_9_17 && python setup.py install; exit 0
 RUN pip install ldap3==2.5.1
-RUN curl https://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-2.7a1.tar.gz -o pycrypto-2.7a1.tar.gz
-RUN tar xzvf pycrypto-2.7a1.tar.gz
-RUN cd /pycrypto-2.7a1 &&  python setup.py install
+RUN pip install pycryptodome
+#RUN curl https://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-2.7a1.tar.gz -o pycrypto-2.7a1.tar.gz
+#RUN tar xzvf pycrypto-2.7a1.tar.gz
+#RUN cd /pycrypto-2.7a1 &&  python setup.py install
 
 WORKDIR $APP_HOME
 
