@@ -35,7 +35,7 @@ class MetasploitModule < Msf::Post
       'License'        => MSF_LICENSE,
       'Author'         => [ 'Praetorian' ],
       'Platform'       => [ 'osx' ],
-      'References'     => [ [ 'URL', 'https://attack.mitre.org/wiki/Technique/T11359' ] ],
+      'References'     => [ [ 'URL', 'https://attack.mitre.org/wiki/Technique/T1159' ] ],
       'SessionTypes'   => [ 'meterpreter' ]))
     register_options(
       [
