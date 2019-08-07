@@ -53,7 +53,7 @@ class MetasploitModule < Msf::Post
     cmd = "launchctl remove com.client.client || echo fail"
     remove = cmd_exec(cmd)
     # Test for success
-    if (unload.include? 'fail') || (remove.include? 'fail')
+    if (unload.include? 'fail') && (remove.include? 'fail')
       print_error("Failed to unload launch agent")
     end
 
