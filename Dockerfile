@@ -61,9 +61,9 @@ RUN cp -f $APP_HOME/docker/database.yml $APP_HOME/config/database.yml
 # Install impacket in the container
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python get-pip.py
-RUN curl https://codeload.github.com/SecureAuthCorp/impacket/tar.gz/impacket_0_9_17 -o impacket.tar.gz
+RUN curl https://codeload.github.com/SecureAuthCorp/impacket/tar.gz/impacket_0_9_20 -o impacket.tar.gz
 RUN tar xzvf impacket.tar.gz
-RUN cd /impacket-impacket_0_9_17 && python setup.py install; exit 0
+RUN cd /impacket-impacket_0_9_20 && python setup.py install; exit 0
 RUN pip install ldap3==2.5.1
 RUN pip install pycryptodome
 #RUN curl https://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-2.7a1.tar.gz -o pycrypto-2.7a1.tar.gz

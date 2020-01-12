@@ -44,7 +44,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^spec/})
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = '>= 2.5'
+  # Modules for gmail API for phishing
+  spec.add_runtime_dependency 'mail'
+  spec.add_runtime_dependency 'google-api-client'
+
 
   # Database support
   spec.add_runtime_dependency 'activerecord', *Metasploit::Framework::RailsVersionConstraint::RAILS_VERSION
@@ -52,8 +55,10 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'activesupport', *Metasploit::Framework::RailsVersionConstraint::RAILS_VERSION
   # Needed for config.action_view for view plugin compatibility for Pro
   spec.add_runtime_dependency 'actionpack', *Metasploit::Framework::RailsVersionConstraint::RAILS_VERSION
+  # Backports Ruby features across language versions
+  spec.add_runtime_dependency 'backports'
   # Needed for some admin modules (cfme_manageiq_evm_pass_reset.rb)
-  spec.add_runtime_dependency 'bcrypt', '3.1.12'
+  spec.add_runtime_dependency 'bcrypt'
   # Needed for Javascript obfuscation
   spec.add_runtime_dependency 'jsobfu'
   # Needed for some admin modules (scrutinizer_add_user.rb)
@@ -70,7 +75,7 @@ Gem::Specification.new do |spec|
   # are needed when there's no database
   spec.add_runtime_dependency 'metasploit-model'
   # Needed for Meterpreter
-  spec.add_runtime_dependency 'metasploit-payloads', '1.3.83'
+  spec.add_runtime_dependency 'metasploit-payloads', '1.3.70'
   # Needed for the next-generation POSIX Meterpreter
   spec.add_runtime_dependency 'metasploit_payloads-mettle', '0.5.16'
   # Needed by msfgui and other rpc components
@@ -167,7 +172,7 @@ Gem::Specification.new do |spec|
   # Library for parsing and manipulating executable binaries
   spec.add_runtime_dependency 'rex-bin_tools'
   # Rex Socket Abstraction Layer
-  spec.add_runtime_dependency 'rex-socket'
+  spec.add_runtime_dependency 'rex-socket', '0.1.17'
   # Library for scanning a server's SSL/TLS capabilities
   spec.add_runtime_dependency 'rex-sslscan'
   # Library and tool for finding ROP gadgets in a supplied binary
@@ -203,12 +208,4 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'aws-sdk-s3'
   spec.add_runtime_dependency 'aws-sdk-ec2'
   spec.add_runtime_dependency 'aws-sdk-iam'
-
-  # Needed for WebSocket Support
-  spec.add_runtime_dependency 'faye-websocket'
-  spec.add_runtime_dependency 'eventmachine'
-
-  # Earlier than latest Faraday gem is used to prevent upstream Octokit errors
-  spec.add_runtime_dependency 'faraday', '<= 0.17.0'
-
 end
