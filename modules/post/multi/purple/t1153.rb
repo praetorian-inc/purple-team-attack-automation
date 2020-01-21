@@ -7,7 +7,7 @@ class MetasploitModule < Msf::Post
 
   def initialize(info = {})
     super(update_info(info,
-      'Name'           => 'Source (T1153) Linux - Purple Team',
+      'Name'           => 'Source (T1153) Linux macOS - Purple Team',
       'Description'    => %q(
       The source command loads functions into the current shell or executes
       files in the current context. This built-in command can be run in two
@@ -22,7 +22,7 @@ class MetasploitModule < Msf::Post
       ),
       'License'        => MSF_LICENSE,
       'Author'         => [ 'Praetorian' ],
-      'Platform'       => [ 'linux' ],
+      'Platform'       => [ 'linux, osx' ],
       'References'     => [ [ 'URL', 'https://attack.mitre.org/wiki/Technique/T1153' ] ],
       'SessionTypes'   => [ 'meterpreter' ]))
     register_options(
