@@ -28,4 +28,4 @@ if [[ $PARAMS == *"--rebuild"* ]]; then
 fi
 
 # we need no database here
-docker-compose run --rm --no-deps ms ./msfvenom "$PARAMS"
+docker-compose run --rm --no-deps ms ./msfvenom $PARAMS
