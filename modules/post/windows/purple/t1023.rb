@@ -84,7 +84,7 @@ class MetasploitModule < Msf::Post
 
     # execute the lnk
     print_status("Triggering persistence...")
-    run_cmd(shortcut)
+    run_cmd("\"#{shortcut}\"")
 
     sleep(3)
 
